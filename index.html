@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Cryptography for Web Developers
+## Justin McCandless
+## @justinjmcc
+
+---
+
+# Ciphers
+## Goal: No one can read your message except the person you intend
+
+---
+
+# Ciphers
+## Goal: No one can read your message except the person you intend
+
+## Examples
+  * Hashes: SHA, MD5 (check file integrity)
+  * Ciphers: 3DES, AES (are Psuedo Random Permutations)
+
+---
+
+# Integrity
+## Goal: No one can forge messages from you
+
+---
+
+# Integrity
+## Goal: No one can forge messages from you
+
+## Examples
+  1. MAC (message authentication code) and many varieties
+  1. We'll see real things that use this next...
+ 
+---
+
+# Authenticated Encryption
+## Goal: Can't read and can't forge
+
+---
+
+# Authenticated Encryption
+## Goal: Can't read and can't forge
+
+## Examples
+  1. Algorithm AES-GCM
+  1. SSL/TLS (MAC then encrypt)
+  1. IPSEC (encrypt then MAC)
+  1. SSH (encrypt and MAC)
+
+---
+
+# Key Exchange
+## Goal: Get a secret key to your recipient securely in the first place
+
+---
+
+# Key Exchange
+## Goal: Get a secret key to your recipient securely in the first place
+
+  * Merkel Puzzles (1974)
+    * Alice sends a bunch of weakly encrypted messages to Bob
+    * Bob solves one, sends solution to Alice
+    * They both use that key!
+    * Alice and Bob's work: O(n)
+    * Attacker's work: O(n^2)
+
+---
+
+# Key Exchange
+## Goal: Get a secret key to your recipient securely in the first place
+
+  * Merkel Puzzles (1974)
+    * Alice sends a bunch of weakly encrypted messages to Bob
+    * Bob solves one, sends solution to Alice
+    * They both use that key!
+    * Alice and Bob's work: O(n)
+    * Attacker's work: O(n^2)
+
+  * Factoring large primes (Diffie-Hellman)
+    * Same idea!
+
+  * Public Key Encryption
+    * Public key encrypts, secret key decrypts
+
+## Examples
+
+  1. Diffie-Hellman
+  1. Public Key Encryption
+    * RSA, HTTPS
+
+---
+
+# Web Crypto
+## All of the above, in the browser
+
+---
+
+# Web Crypto
+## All of the above, in the browser
+
+  * Good
+    * Netflix!
+      * And other necessary DRM evils
+    * Sites that secure users' data against themselves
+      * Mega, credit card info
+      * Protecting a website's own interests (not the user's)
+
+---
+
+# Web Crypto
+## All of the above, in the browser
+
+  * Good
+    * Netflix!
+      * And other necessary DRM evils
+    * Sites that secure users' data against themselves
+      * Mega
+  * Bad
+    * DRM
+    * You can't trust javascript, and if you could, you wouldn't need encryption
+
+---
+
+# References
+
+  * What’s wrong with in-browser cryptography? http://tonyarcieri.com/whats-wrong-with-webcrypto
+  * Javascript Cryptography Considered Harmful http://matasano.com/articles/javascript-cryptography/
+  * Good Coursera course Crypto 1 at Stanford: https://www.coursera.org/course/crypto
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
